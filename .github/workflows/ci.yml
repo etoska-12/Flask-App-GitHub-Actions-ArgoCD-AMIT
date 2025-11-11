@@ -10,7 +10,7 @@ on:
             paths:
                 - '**/*'
 
-jobs:
+   jobs:
     Build:
         runs-on: ubuntu-latest
 
