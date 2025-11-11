@@ -57,6 +57,7 @@ jobs:
       - name: update k8s manifest file
         run : |
          sed -i "s/image: kambleamitwork/demo-app:*|image: kambleamitwork/demo-app:${{ env.VERSION }}|g" K8S/deployment.yaml
+         cat deploy/deploy.yaml
       # update github#
       
       - name: commit the changes
@@ -65,8 +66,10 @@ jobs:
          git config --global user.name "github actions"
          git add deploy/deploy.yaml
          git commit -m "update deploy.yaml with new image version - ${{ env.VERSION }}"
-         git push origin master 
-
+         git remote set-url origin https://$GITHUB_ACTIONS:${{ secrets.GITHUB_TOKEN }}@github.com/kambleamitwork/flask-app-github-actions-argocd-amit.git
+         git push origin master
+         
+ 
 
 
 
