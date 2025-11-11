@@ -56,7 +56,7 @@ jobs:
       # update the k8s manifest file#
       - name: update k8s manifest file
         run : |
-         sed -i 's/'image: kambleamitwork/demo-app:*/image: kambleamitwork/demo-app:${{ env.VERSION }}/' K8S/deployment.yaml
+         sed -i "s/image: kambleamitwork/demo-app:*|image: kambleamitwork/demo-app:${{ env.VERSION }}|g" K8S/deployment.yaml
       # update github#
       
       - name: commit the changes
