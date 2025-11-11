@@ -60,7 +60,7 @@ jobs:
         run : |
          echo "Before update"
          cat deploy/deploy.yaml
-         sed -i "s|image: kambleamitwork/demo-app:[^[:space:]]*|image: kambleamitwork/demo-app:${{ env.VERSION }}|g" deploy/deploy.yaml
+         sed -i "s|image: kambleamitwork/demo-app: *|image: kambleamitwork/demo-app:${{ env.VERSION }}|g" deploy/deploy.yaml
            echo "After update"
          cat deploy/deploy.yaml
       # update github#
