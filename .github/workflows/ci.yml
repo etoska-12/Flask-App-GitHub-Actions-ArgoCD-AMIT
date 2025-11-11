@@ -53,6 +53,21 @@ jobs:
         run: |
           docker push kambleamitwork/demo-app:${{ env.VERSION }}
 
+      # update the k8s manifest file#
+      - name: update k8s manifest file
+        run : |
+         sed -i 's/'image: kambleamitwork/demo-app:*/image: kambleamitwork/demo-app:${{ env.VERSION }}/' K8S/deployment.yaml
+      # update github#
+      
+      - name: commit the changes
+        run: |
+         git config --global user.email "yezindagi1234@gmail.com"
+         git config --global user.name "github actions"
+         git add deploy/deploy.yaml
+         git commit -m "update deploy.yaml with new image version - ${{ env.VERSION }}"
+         git push origin master 
+
+
 
 
 
