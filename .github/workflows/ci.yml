@@ -9,9 +9,11 @@ on:
                 
             paths:
                 - '**/*'
+    jobs:
+                
 
-   jobs:
-    Build:
+
+        Build:
         runs-on: ubuntu-latest
 
         steps:
