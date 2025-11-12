@@ -73,9 +73,9 @@ jobs:
       git add deploy/deploy.yaml
 
     # Check if there are any changes before committing
-      if ! git diff --cached --quiet; then
+      if ! git diff -- cached --quiets: then 
        git commit -m "Update deploy.yaml with new image version - ${{ env.VERSION }}"
-      git push https://github-actions:${GITHUB_TOKEN}@github.com/kambleamitwork/flask-app-github-actions-argocd-amit.git master
-      else
-      echo "✅ No changes to commit — skipping git push."
-      fi
+       git push https://github-actions:${GITHUB_TOKEN}@github.com/kambleamitwork/flask-app-github-actions-argocd-amit.git master
+       else
+       echo "✅ No changes to commit — skipping git push."
+       fi
